@@ -23,13 +23,16 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
         
+      - name: Upload URL
+        id: step_upload_url
+        run: echo "::set-output name=upload_url::${{ steps.create_release.outputs.upload_url }}"
       - name: Upload wheel
         id: upload-wheel
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ github.event.release.upload_url }}
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: dist/az_pinning-${{ steps.get_version.outputs.version }}-py3-none-any.whl
           asset_name: az_pinning-${{ steps.get_version.outputs.version }}-py3-none-any.whl
           asset_content_type: application/octet-stream
