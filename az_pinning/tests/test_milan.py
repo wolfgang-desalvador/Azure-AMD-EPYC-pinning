@@ -1,6 +1,6 @@
 import unittest
 
-from ..sku_milan import HB120v3
+from az_pinning.sku_milan import HB120v3
   
 
 class HB120V3(unittest.TestCase):
