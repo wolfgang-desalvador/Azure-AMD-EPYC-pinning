@@ -19,7 +19,7 @@ jobs:
           python -m pip install wheel
           python setup.py bdist_wheel
           
-       - name: Get the version
+      - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
         
