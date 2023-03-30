@@ -14,5 +14,5 @@ jobs:
     - uses: actions/checkout@main
     
     - name: Run unittest
-      run: PYTHONPATH=./az_pinning python -m unittest discover az_pinning
+      run: python -m unittest discover az_pinning
   
