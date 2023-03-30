@@ -23,9 +23,16 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
         
-      - name: Upload URL
-        id: step_upload_url
-        run: echo "::set-output name=upload_url::${{ steps.create_release.outputs.upload_url }}"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
       - name: Upload wheel
         id: upload-wheel
         uses: actions/upload-release-asset@v1
