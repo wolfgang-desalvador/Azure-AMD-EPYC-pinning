@@ -1,0 +1,18 @@
+on:
+  push:
+    branches:
+    - main
+concurrency: deployment_environment
+name: Run unittests
+
+     
+jobs:
+  unittests:
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout code
+    - uses: actions/checkout@main
+    
+    - name: Run unittest
+      run: python -m unittest discover az_pinning
+  
