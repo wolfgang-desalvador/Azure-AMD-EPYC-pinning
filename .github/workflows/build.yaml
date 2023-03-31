@@ -11,6 +11,9 @@ jobs:
   build:
     name: Upload Release Asset
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -43,3 +46,5 @@ jobs:
           asset_path: dist/az_pinning-${{ steps.get_version.outputs.version }}-py3-none-any.whl
           asset_name: az_pinning-${{ steps.get_version.outputs.version }}-py3-none-any.whl
           asset_content_type: application/octet-stream
+          
+          
