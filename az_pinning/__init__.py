@@ -1,3 +1,5 @@
-from .sku_milan import HB120v3
+from .main import main
+
+main = main
 
 __version__ = '0.0.1'
